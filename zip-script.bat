@@ -1,1 +1,1 @@
-CALL tar -cvzf post-install-script-1.0.0.tgz post-install.ps1
+CALL tar -cvzf post-install-script\1.0.0\post-install-script-1.0.0.tgz post-install.ps1
