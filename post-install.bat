@@ -31,5 +31,9 @@ REM Für Später wenn man evtl. eine existierende java installation kopieren wil
 REM schon ein JDK installiert ist
 REM dir /b /a "%javafolder%\*" | >nul findstr "^" && (echo Files and/or Folders exist) || (echo No Files and/or Folders exist)
 
+REM Download JKS File from Server
+REM With Powershell: powershell -Command "Invoke-WebRequest http://localhost:8080/webservertest/downloads/test_user-chain.jks -OutFile test_user-chain.jks"
+bitsadmin.exe /transfer "DownloadJKS" http://localhost:8080/webservertest/downloads/test_user-chain.jks %CD%\test_user_chain_bitsadmindownload.jks
+REM If there is an error while downloading job has to be canceld manually 
 pause
 echo end
