@@ -34,6 +34,12 @@ REM dir /b /a "%javafolder%\*" | >nul findstr "^" && (echo Files and/or Folders 
 REM Download JKS File from Server
 REM With Powershell: powershell -Command "Invoke-WebRequest http://localhost:8080/webservertest/downloads/test_user-chain.jks -OutFile test_user-chain.jks"
 bitsadmin.exe /transfer "DownloadJKS" http://localhost:8080/webservertest/downloads/test_user-chain.jks %CD%\test_user_chain_bitsadmindownload.jks
-REM If there is an error while downloading job has to be canceld manually 
+REM If there is an error while downloading job has to be cancelled manually 
+echo test test test
+pause
+
+REM call find-and-replace.bat with string to search for and string to replace with
+call find-and-replace.bat "#TODO_1" "ABC_USERNAME"
+call find-and-replace.bat "#TODO_2" "XYZ_USERNAME"
 pause
 echo end
