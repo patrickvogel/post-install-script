@@ -4,8 +4,8 @@ set "search=%1"
 set "replace=%2"
 set search=%search:"=%
 set replace=%replace:"=%
-set "originalFile=.\conf\devon.properties"
-set "newFile=.\conf\devon.properties.copy"
+set "originalFile=%3"
+set "newFile=%4"
 
 REM GET Filename + Extension from Path
 for %%A in ("%originalFile%") do (
@@ -22,4 +22,6 @@ REM
 del %originalFile%
 rename %newFile% %name%
 REM TODO: add test if replace is contained in file 
+REM echo %search% has been successfully replaced with %replace% in %originalFile%
+echo end of find and replace all Files.bat 
 
