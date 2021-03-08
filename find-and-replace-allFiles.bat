@@ -23,5 +23,4 @@ del %originalFile%
 rename %newFile% %name%
 REM TODO: add test if replace is contained in file 
 REM echo %search% has been successfully replaced with %replace% in %originalFile%
-echo end of find and replace all Files.bat 
 

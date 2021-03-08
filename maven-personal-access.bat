@@ -36,5 +36,4 @@ for /f "tokens=*" %%b in ('mvn -ep %password%') do (
     set "_xyzSecondBracket=!_xyzFirstBracket:}=^}!"
 )
 call find-and-replace-allFiles.bat TODO_COPY_XYZ_ARTIFACTORY_PASSWORD "!_xyzSecondBracket!" .\conf\.m2\settings.xml .\conf\.m2\settings.xml.copy
-pause
 echo endo of maven-personal-access.bat
