@@ -27,7 +27,6 @@ set /P "password="
 REM clear console
 cls
 color 07
-REM TODO write into correct file, check when mvn is a known command
 for /f "tokens=*" %%b in ('mvn -ep %password%') do (
     set "_xyzResult=%%b"
     REM escpae first bracket 
