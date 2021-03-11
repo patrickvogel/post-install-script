@@ -4,8 +4,8 @@ set "search=%1"
 set "replace=%2"
 set search=%search:"=%
 set replace=%replace:"=%
-set "originalFile=.\conf\devon.properties"
-set "newFile=.\conf\devon.properties.copy"
+set "originalFile=%~dp0\conf\devon.properties"
+set "newFile=%~dp0\conf\devon.properties.copy"
 
 REM GET Filename + Extension from Path
 for %%A in ("%originalFile%") do (

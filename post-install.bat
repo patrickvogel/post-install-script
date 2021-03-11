@@ -1,5 +1,6 @@
 @echo off
-@echo off
+echo %~dp0
+pause
 goto check_Permissions
 
 :check_Permissions
@@ -27,10 +28,10 @@ goto check_Permissions
     REM If there is an error while downloading job has to be cancelled manually 
 
     REM call find-and-replace.bat with string to search for and string to replace with
-    call find-and-replace.bat "#TODO_1" "ABC_USERNAME"
-    call find-and-replace.bat "#TODO_2" "XYZ_USERNAME"
+    call %~dp0find-and-replace.bat "#TODO_1" "ABC_USERNAME"
+    call %~dp0find-and-replace.bat "#TODO_2" "XYZ_USERNAME"
     REM call maven-personal-acces.bat to setup maven settings and passwords
-    call maven-personal-access.bat
+    call %~dp0maven-personal-access.bat
     pause
     echo end
 
