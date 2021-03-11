@@ -12,6 +12,7 @@ if exist %javafolder% (
 ) else (
     mkdir %javafolder%
 )
+REM TODO search for jdk exe
 jdk-8u281-windows-x64.exe /s /INSTALLDIRPUBJRE=%javafolder%
 
 REM Create file .devon.software.version and write version into it

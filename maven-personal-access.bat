@@ -11,6 +11,7 @@ REM clear console
 cls
 color 07
 setlocal EnableDelayedExpansion
+REM {asbdlabsd=/}
 for /f "tokens=*" %%a in ('mvn -ep %password%') do (
     set "_CmdResult=%%a"
     REM escpae first bracket 

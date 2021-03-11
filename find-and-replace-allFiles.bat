@@ -11,7 +11,6 @@ REM GET Filename + Extension from Path
 for %%A in ("%originalFile%") do (
 	set name=%%~nxA
 )
-REM 
 (for /f "delims=" %%i in (%originalFile%) do (
     set "line=%%i"
     setlocal enabledelayedexpansion
