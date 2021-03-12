@@ -6,6 +6,6 @@ dir /a-d *.jks >nul 2>&1 &&(
     echo No .jks File in folder
 ) || (
     :: file does exist - do something
-    echo jks File successfully downloaded
+    echo jks File found in current folder! continuing
 )
 pause

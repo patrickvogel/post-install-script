@@ -37,9 +37,13 @@ goto check_Permissions
     REM call maven-personal-acces.bat to setup maven settings and passwords
     echo setting up maven-settings and passwords
     call %~dp0maven-personal-access.bat %abc_pwd% %xyz_pwd%
+
     REM call npmrc-settings.bat to setup the npm token
     echo setting up npm token
     call %~dp0npmrc-settings.bat %abc_username% %abc_pwd%
+
+    echo Setting up eclipse.ini with userhome conf
+    call %~dp0setup-eclipse-ini.bat
     echo post-install ended
 
 :end_of_script
