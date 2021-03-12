@@ -1,11 +1,10 @@
 @echo off
-echo %~dp0
-pause
 goto check_Permissions
 
 :check_Permissions
     echo Administrative permissions required. Detecting permissions...
     REM net session requires admin permission using it to check if we have Admin permissions
+    REM send stdout(1) to null and send errout(2) to 1
     net session >nul 2>&1
     if %errorLevel% == 0 (
         echo Success: Administrative permissions confirmed.
@@ -19,21 +18,29 @@ goto check_Permissions
     pause >nul
 
 :run_script
-    REM nutzer eingabe: username pwd 
-    call java-install.bat
-
     REM Download JKS File from Server
-    REM With Powershell: powershell -Command "Invoke-WebRequest http://localhost:8080/webservertest/downloads/test_user-chain.jks -OutFile test_user-chain.jks"
-    bitsadmin.exe /transfer "DownloadJKS" http://localhost:8080/webservertest/downloads/test_user-chain.jks %CD%\test_user_chain_bitsadmindownload.jks
+    call %~dp0download-jks.bat
     REM If there is an error while downloading job has to be cancelled manually 
 
+    REM nutzer eingabe: username pwd 
+    call %~dp0get-username-pwd.bat abc_username,abc_pwd,xyz_username,xyz_pwd
+    echo installing java
+    call %~dp0java-install.bat
+
+
     REM call find-and-replace.bat with string to search for and string to replace with
-    call %~dp0find-and-replace.bat "#TODO_1" "ABC_USERNAME"
-    call %~dp0find-and-replace.bat "#TODO_2" "XYZ_USERNAME"
+    echo Writing Artifactory Usernames into conf\devon.properties
+    call %~dp0find-and-replace.bat "#TODO_1" %abc_username% %~dp0conf\devon.properties %~dp0conf\devon.properties.copy
+    call %~dp0find-and-replace.bat "#TODO_2" %xyz_username% %~dp0conf\devon.properties %~dp0conf\devon.properties.copy
+    echo Done with writing Artifactory Usernamens into conf\devon.properties
+
     REM call maven-personal-acces.bat to setup maven settings and passwords
-    call %~dp0maven-personal-access.bat
-    pause
-    echo end
+    echo setting up maven-settings and passwords
+    call %~dp0maven-personal-access.bat %abc_pwd% %xyz_pwd%
+    REM call npmrc-settings.bat to setup the npm token
+    echo setting up npm token
+    call %~dp0npmrc-settings.bat %abc_username% %abc_pwd%
+    echo post-install ended
 
 :end_of_script
     pause

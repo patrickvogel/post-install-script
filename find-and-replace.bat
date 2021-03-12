@@ -1,17 +1,17 @@
-REM call this bat with two parameters 1 word you want to search for 2 replacement
+REM call this bat with four parameters 1 word you want to search for 2 replacement 3original file 4
 @echo off
+SETLOCAL
 set "search=%1"
 set "replace=%2"
 set search=%search:"=%
 set replace=%replace:"=%
-set "originalFile=%~dp0\conf\devon.properties"
-set "newFile=%~dp0\conf\devon.properties.copy"
+set "originalFile=%3"
+set "newFile=%4"
 
 REM GET Filename + Extension from Path
 for %%A in ("%originalFile%") do (
 	set name=%%~nxA
 )
-
 (for /f "delims=" %%i in (%originalFile%) do (
     set "line=%%i"
     setlocal enabledelayedexpansion
