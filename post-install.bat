@@ -44,6 +44,11 @@ goto check_Permissions
 
     echo Setting up eclipse.ini with userhome conf
     call %~dp0setup-eclipse-ini.bat
+    echo setting up windows build tools
+    call %~dp0windows-build-tools-installation.bat
+    
+    devon
+    npm install -g windows-build-tools
     echo post-install ended
 
 :end_of_script
